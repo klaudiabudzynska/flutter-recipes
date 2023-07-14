@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:recipes/models/favorites_model.dart';
 import 'package:recipes/pages/recipe_page.dart';
+import 'package:recipes/widgets/favorite_button.dart';
 
 import '../models/recipe_model.dart';
 
 class Recipe extends StatelessWidget {
   final RecipeModel recipe;
 
-  Recipe(this.recipe, {super.key});
+  const Recipe(this.recipe, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,17 +31,7 @@ class Recipe extends StatelessWidget {
                     recipe.title,
                   ),
                 ),
-                Consumer<FavoritesModel>(
-                  builder: (context, favorites, _) {
-                    return IconButton(
-                      iconSize: 40,
-                      icon: const Icon(Icons.favorite),
-                      onPressed: () {
-                        favorites.addFavorite(recipe);
-                      },
-                    );
-                  },
-                )
+                FavoriteButton(recipe),
               ],
             ),
           ],

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:recipes/models/recipe_model.dart';
-
-import '../models/favorites_model.dart';
+import 'package:recipes/widgets/favorite_button.dart';
 
 class RecipePage extends StatelessWidget {
   static const routeName = '/recipe';
@@ -25,21 +23,10 @@ class RecipePage extends StatelessWidget {
           children: [
             Flexible(
               child: Text(
-                // style: Theme.of(context).textTheme.displaySmall,
                 recipe.title,
               ),
             ),
-            Consumer<FavoritesModel>(
-              builder: (context, favorites, _) {
-                return IconButton(
-                  iconSize: 40,
-                  icon: const Icon(Icons.favorite),
-                  onPressed: () {
-                    favorites.addFavorite(recipe);
-                  },
-                );
-              },
-            )
+            FavoriteButton(recipe),
           ],
         ),
       ]),
