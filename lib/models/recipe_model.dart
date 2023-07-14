@@ -1,4 +1,5 @@
 class RecipeModel {
+  int? id;
   String title;
   String imageUrl;
 
@@ -9,5 +10,15 @@ class RecipeModel {
         "https://cdn.galleries.smcloud.net/t/photos/gf-4CXe-ugW6-GUKj_smakowite-chaczapuri-ze-szpinakiem-przepis-na-pyszny-placek-serowy-rodem-z-gruzji.jpg")
   ];
 
-  RecipeModel(this.title, this.imageUrl);
+  RecipeModel(
+    this.title,
+    this.imageUrl, {
+    this.id,
+  });
+
+  static RecipeModel fromJson(Map<String, dynamic> json) => RecipeModel(
+        json['title'] as String,
+        json['image'] as String,
+        id: json['id'] as int,
+      );
 }
