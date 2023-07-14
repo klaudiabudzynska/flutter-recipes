@@ -20,7 +20,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
   Widget build(BuildContext context) {
     return Consumer<FavoritesModel>(
       builder: (context, favorites, _) {
-        bool isFavorite = favorites.favorites.contains(widget.recipe);
+        bool isFavorite = favorites.contains(widget.recipe);
         _isActive = isFavorite;
 
         return IconButton(

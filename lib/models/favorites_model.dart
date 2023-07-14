@@ -18,4 +18,8 @@ class FavoritesModel extends ChangeNotifier {
     _favorites.remove(recipe);
     notifyListeners();
   }
+
+  bool contains(RecipeModel recipe) {
+    return _favorites.any((element) => element.id == recipe.id);
+  }
 }

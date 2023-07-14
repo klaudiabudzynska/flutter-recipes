@@ -16,20 +16,56 @@ class RecipePage extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Recipes App'),
       ),
-      body: Column(children: [
-        Image.network(recipe.imageUrl, width: 280),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Flexible(
-              child: Text(
-                recipe.title,
+      body: SingleChildScrollView(
+        child: Column(children: [
+          Image.network(recipe.imageUrl, width: 280),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Flexible(
+                child: Text(
+                  recipe.title,
+                ),
               ),
-            ),
-            FavoriteButton(recipe),
-          ],
-        ),
-      ]),
+              FavoriteButton(recipe),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  children: [
+                    const Icon(Icons.person),
+                    Text('Servings: ${recipe.servings}'),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  children: [
+                    const Icon(Icons.schedule),
+                    Text('Preparation: ${recipe.readyInMinutes}min'),
+                  ],
+                ),
+              )
+            ],
+          ),
+          ListView(
+            padding: const EdgeInsets.all(20.0),
+            shrinkWrap: true,
+            children: recipe.analyzedInstructions[0].steps
+                .map((instruction) => Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                          "Step ${instruction.number}: ${instruction.step}"),
+                    ))
+                .toList(),
+          ),
+        ]),
+      ),
     );
   }
 }

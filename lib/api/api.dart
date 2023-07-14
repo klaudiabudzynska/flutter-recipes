@@ -19,19 +19,9 @@ class Api {
       "/recipes/complexSearch",
       queryParameters: <String, dynamic>{
         "query": query,
+        "addRecipeInformation": true,
+        "instructionsRequired": true,
       },
-    );
-
-    if (isSuccessfulStatusCode(result.statusCode!)) {
-      return RecipeSearchResponse.fromJson(result.data);
-    } else {
-      throw result.statusMessage!;
-    }
-  }
-
-  Future<RecipeSearchResponse> searchRecipe(int id) async {
-    final result = await dio.get(
-      "/recipes/$id/information",
     );
 
     if (isSuccessfulStatusCode(result.statusCode!)) {

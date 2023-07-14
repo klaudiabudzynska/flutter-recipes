@@ -1,24 +1,29 @@
+import 'package:recipes/models/instruction_model.dart';
+
 class RecipeModel {
   int? id;
   String title;
   String imageUrl;
-
-  static final examples = <RecipeModel>[
-    RecipeModel("Szakszuka",
-        "https://www.kwestiasmaku.com/sites/v123.kwestiasmaku.com/files/jajka_w_pomidorach_01-1.jpg"),
-    RecipeModel("Chaczapuri",
-        "https://cdn.galleries.smcloud.net/t/photos/gf-4CXe-ugW6-GUKj_smakowite-chaczapuri-ze-szpinakiem-przepis-na-pyszny-placek-serowy-rodem-z-gruzji.jpg")
-  ];
+  int servings;
+  int readyInMinutes;
+  List<InstructionModel> analyzedInstructions;
 
   RecipeModel(
-    this.title,
-    this.imageUrl, {
     this.id,
-  });
+    this.title,
+    this.imageUrl,
+    this.servings,
+    this.readyInMinutes,
+    this.analyzedInstructions,
+  );
 
   static RecipeModel fromJson(Map<String, dynamic> json) => RecipeModel(
-        json['title'] as String,
-        json['image'] as String,
-        id: json['id'] as int,
-      );
+      json['id'] as int,
+      json['title'] as String,
+      json['image'] as String,
+      json['servings'] as int,
+      json['readyInMinutes'] as int,
+      (json['analyzedInstructions'] as List<dynamic>)
+          .map((e) => InstructionModel.fromJson(e as Map<String, dynamic>))
+          .toList());
 }
