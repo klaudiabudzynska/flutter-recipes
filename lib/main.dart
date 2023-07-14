@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipes/models/recipe_model.dart';
+import 'package:recipes/pages/recipe_page.dart';
 import 'package:recipes/pages/recipes_page.dart';
 
 void main() {
@@ -17,26 +18,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Recipes App'),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(title),
-      ),
-      body: Center(
-        child: RecipesPage(),
-      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => RecipesPage(),
+        RecipePage.routeName: (context) => RecipePage(),
+      },
     );
   }
 }
