@@ -13,16 +13,9 @@ class FavoritePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<FavoritesModel>(
       builder: (context, favoritesModel, _) {
-        return Scaffold(
-          appBar: AppBar(
-            backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-            title: const Text('Recipes App'),
-          ),
-          body: Column(
-            children: favoritesModel.favorites
-                .map((recipe) => Recipe(recipe))
-                .toList(),
-          ),
+        return ListView(
+          children:
+              favoritesModel.favorites.map((recipe) => Recipe(recipe)).toList(),
         );
       },
     );

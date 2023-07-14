@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:recipes/pages/favorite_page.dart';
 import 'package:recipes/pages/recipe_page.dart';
-import 'package:recipes/pages/recipes_page.dart';
 
 import 'models/favorites_model.dart';
+import 'navigation.dart';
 
 void main() {
   runApp(
@@ -28,9 +27,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const RecipesPage(),
+        '/': (context) => const Navigation(),
         RecipePage.routeName: (context) => const RecipePage(),
-        FavoritePage.routeName: (context) => const FavoritePage(),
       },
     );
   }
