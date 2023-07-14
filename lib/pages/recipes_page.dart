@@ -5,7 +5,7 @@ import '../api/responses/recipe_search_response.dart';
 import '../widgets/recipe.dart';
 
 class RecipesPage extends StatefulWidget {
-  RecipesPage({super.key});
+  const RecipesPage({super.key});
 
   @override
   State<RecipesPage> createState() => _RecipesPageState();
@@ -20,6 +20,8 @@ class _RecipesPageState extends State<RecipesPage> {
 
     recipesRequest = Api().searchRecipes();
   }
+
+  void _onItemTapped(int index) {}
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +49,19 @@ class _RecipesPageState extends State<RecipesPage> {
             return const Text('Loading...');
           },
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Favorites',
+          ),
+        ],
+        onTap: _onItemTapped,
       ),
     );
   }

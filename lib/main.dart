@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:recipes/models/recipe_model.dart';
+import 'package:provider/provider.dart';
+import 'package:recipes/pages/favorite_page.dart';
 import 'package:recipes/pages/recipe_page.dart';
 import 'package:recipes/pages/recipes_page.dart';
 
+import 'models/favorites_model.dart';
+
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => FavoritesModel(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -20,8 +28,9 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => RecipesPage(),
-        RecipePage.routeName: (context) => RecipePage(),
+        '/': (context) => const RecipesPage(),
+        RecipePage.routeName: (context) => const RecipePage(),
+        FavoritePage.routeName: (context) => const FavoritePage(),
       },
     );
   }

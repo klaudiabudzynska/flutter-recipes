@@ -28,4 +28,16 @@ class Api {
       throw result.statusMessage!;
     }
   }
+
+  Future<RecipeSearchResponse> searchRecipe(int id) async {
+    final result = await dio.get(
+      "/recipes/$id/information",
+    );
+
+    if (isSuccessfulStatusCode(result.statusCode!)) {
+      return RecipeSearchResponse.fromJson(result.data);
+    } else {
+      throw result.statusMessage!;
+    }
+  }
 }
