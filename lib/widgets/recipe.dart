@@ -9,11 +9,25 @@ class Recipe extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Image.network(recipe.imageUrl, width: 200),
-        Text(recipe.title),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        children: [
+          Image.network(recipe.imageUrl, width: 280),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                  style: Theme.of(context).textTheme.displaySmall,
+                  recipe.title),
+              IconButton(
+                  iconSize: 40,
+                  icon: const Icon(Icons.favorite),
+                  onPressed: () {})
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

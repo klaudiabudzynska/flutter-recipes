@@ -8,10 +8,20 @@ class RecipesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return ListView(
       children: [
         Recipe(RecipeModel.examples[0]),
-        Recipe(RecipeModel.examples[1]),
+        Recipe(RecipeModel.examples[0]),
+        Recipe(RecipeModel.examples[0]),
+        Recipe(RecipeModel.examples[0]),
+        Recipe(RecipeModel.examples[0]),
+        Recipe(RecipeModel.examples[0]),
+        Recipe(RecipeModel.examples[0]),
+        Recipe(RecipeModel.examples[0]),
+        Recipe(RecipeModel.examples[0]),
+        Recipe(RecipeModel.examples[0]),
+        Recipe(RecipeModel.examples[0]),
+        Recipe(RecipeModel.examples[0]),
       ],
     );
   }
